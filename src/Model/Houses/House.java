@@ -1,5 +1,6 @@
 package Model.Houses;
 
+import Model.Houses.HouseCards.HouseCard;
 import Model.Provinces.Province;
 
 import java.util.Set;
