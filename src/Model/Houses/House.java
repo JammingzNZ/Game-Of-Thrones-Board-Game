@@ -1,7 +1,6 @@
 package Model.Houses;
 
 import Model.Provinces.Province;
-import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 import java.util.Set;
 
@@ -9,29 +8,32 @@ import java.util.Set;
  * Created by jaln on 1/12/15.
  */
 public class House {
+
+    // The Min and Max amount of power tokens
     int MAXTOKENS = 20;
     int MINTOKENS = 0;
 
     // These Sets are collections of different classes associated with a House
-    private Set Provinces;
-    private Set HouseCards;
-    private Set IntialHouseCards;
+    private Set provinces;
+    private Set houseCards;
+    private Set intialHouseCards;
 
+    // These are set to the base game of Game Of Thrones, no setters are available.
     // These Integers show how many of each Unit type the House has available
-    private int AvailableFootmen = 10;
-    private int AvailableKnights = 5;
-    private int AvailableShips = 6;
-    private int AvailableSiegeEngienes = 2;
-    private int AvailablePowerTokens = 20;
+    private int availableFootmen = 10;
+    private int availableKnights = 5;
+    private int availableShips = 6;
+    private int availableSiegeEngienes = 2;
+    private int availablePowerTokens = MAXTOKENS;
 
-    private int PowerTokens = 5;
+    private int powerTokens = MINTOKENS;
 
     /**
      * Get the provinces that this House controls
      * @return the provinces that are in the House's control
      */
     public Set getProvinces() {
-        return Provinces;
+        return provinces;
     }
 
     /**
@@ -39,7 +41,7 @@ public class House {
      * @param province
      */
     public void addProvince(Province province) {
-        Provinces.add(province);
+        provinces.add(province);
     }
 
     /**
@@ -47,7 +49,7 @@ public class House {
      * @param province
      */
     public void removeProvince(Province province) {
-        Provinces.remove(province);
+        provinces.remove(province);
     }
 
     /**
@@ -55,7 +57,7 @@ public class House {
      * @return hand of House Cards
      */
     public Set getHouseCards() {
-        return HouseCards;
+        return houseCards;
     }
 
     /**
@@ -63,14 +65,14 @@ public class House {
      * @param housecard
      */
     public void removeHouseCard(HouseCard housecard) {
-        HouseCards.remove(housecard);
+        houseCards.remove(housecard);
     }
 
     /**
      * Resets the Hand of House Cards
      */
     public void resetHouseCards() {
-        HouseCards.addAll(IntialHouseCards);
+        houseCards.addAll(intialHouseCards);
     }
 
     /**
@@ -78,7 +80,7 @@ public class House {
      * @return number of available Footman
      */
     public int getAvailableFootman() {
-        return AvailableFootmen;
+        return availableFootmen;
     }
 
     /**
@@ -86,7 +88,7 @@ public class House {
      * @return number of available Knights
      */
     public int getAvailableKnights() {
-        return AvailableKnights;
+        return availableKnights;
 
     }
     /**
@@ -94,7 +96,7 @@ public class House {
      * @return number of available Ships
      */
     public int getAvailableShips() {
-        return AvailableShips;
+        return availableShips;
     }
 
     /**
@@ -102,7 +104,7 @@ public class House {
      * @return number of available Siege Engienes
      */
     public int getAvailableSiegeEngienes() {
-        return AvailableSiegeEngienes;
+        return availableSiegeEngienes;
     }
 
 
@@ -111,56 +113,56 @@ public class House {
      * Reduces the amount of Footman that this House has available
      */
     public void placeFootman() {
-        AvailableFootmen =- 1;
+        availableFootmen =- 1;
     }
 
     /**
      * Increases the amount of Footmen that this House has Available
      */
     public void retrieveFootman() {
-        AvailableFootmen =+ 1;
+        availableFootmen =+ 1;
     }
 
     /**
      * Reduces the amount of Knights that this House has Available
      */
     public void placeKnight() {
-        AvailableKnights =- 1;
+        availableKnights =- 1;
     }
 
     /**
      * Increases the amount of Knights that this House has Available
      */
     public void retrieveknight() {
-        AvailableKnights =+ 1;
+        availableKnights =+ 1;
     }
 
     /**
      * Reduces the amount of Ships that this House has Available
      */
     public void placeShip() {
-        AvailableShips =- 1;
+        availableShips =- 1;
     }
 
     /**
      * Increases the amount of Ships that this House has Available
      */
     public void retrieveShip() {
-        AvailableShips =+ 1;
+        availableShips =+ 1;
     }
 
     /**
      * Reduces the amount of SiegeEngienes that this House has Available
      */
     public void placeSiegeEngiene() {
-        AvailableSiegeEngienes =- 1;
+        availableSiegeEngienes =- 1;
     }
 
     /**
      * Increases the Amount of Siege Engienes that this House has Available
      */
     public void retrieveSiegeEngiene() {
-        AvailableSiegeEngienes =+ 1;
+        availableSiegeEngienes =+ 1;
     }
 
     /**
@@ -168,7 +170,7 @@ public class House {
      * @return the number of Power Tokens the House can spend
      */
     public int getPowerTokens() {
-        return PowerTokens;
+        return powerTokens;
     }
 
     /**
@@ -177,12 +179,11 @@ public class House {
      * @param powerTokens the number of power tokens this House is collecting
      */
     public void collectPowerTokens(int powerTokens) {
-        PowerTokens =+ powerTokens;
-        AvailablePowerTokens =- powerTokens;
-        if (PowerTokens > MAXTOKENS) {
-            PowerTokens = MAXTOKENS;
-            AvailablePowerTokens = MINTOKENS;
+        if (powerTokens > availablePowerTokens) {
+            powerTokens = availablePowerTokens;
         }
+        this.powerTokens =+ powerTokens;
+        availablePowerTokens =- powerTokens;
     }
 
     /**
@@ -191,21 +192,21 @@ public class House {
      * @param powerTokens
      */
     public void spendPowerTokens(int powerTokens) {
-        PowerTokens =- powerTokens;
-        AvailablePowerTokens =+ powerTokens;
+        this.powerTokens =- powerTokens;
+        availablePowerTokens =+ powerTokens;
     }
 
     /**
      * Removes one Power token from the House's Available Power Tokens to maintain influence in an area
      */
     public void placePowerToken() {
-        PowerTokens =- 1;
+        powerTokens =- 1;
     }
 
     /**
      * Returns one power token from the House's old provinces and returns it to the House's available power tokens
      */
     public void returnPowerToken() {
-        AvailablePowerTokens =+ 1;
+        availablePowerTokens =+ 1;
     }
 }
