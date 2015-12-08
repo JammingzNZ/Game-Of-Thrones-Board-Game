@@ -1,4 +1,4 @@
-package Model.Provinces;
+package Model.Map;
 
 import Model.Units.Unit;
 
@@ -12,7 +12,7 @@ public class Province {
 
     // The name of the Province
     private String Name;
-    // Provinces neighouring Provinces and the Units in that Province
+    // Map neighouring Map and the Units in that Province
     private Set neighbours;
     private Set units = new HashSet();
     // The different resources in the Province
