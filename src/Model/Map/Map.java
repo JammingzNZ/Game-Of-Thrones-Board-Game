@@ -13,18 +13,18 @@ public class Map {
 
     /**
      * Adds provinces to the map
-     * @param province the set of provinces to be added
+     * @param provinceCollection the set of provinces to be added
      */
-    public void addProvinces(Collection<Province> province) {
-        provinces.addAll(provinces);
+    public void addProvinces(Collection<Province> provinceCollection) {
+        provinces.addAll(provinceCollection);
     }
 
     /**
      * Removes provinces from the map
-     * @param province the set of provinces to be removed
+     * @param provinceCollection the set of provinces to be removed
      */
-    public void removeProvinces(Collection<Province> province) {
-        provinces.removeAll(provinces);
+    public void removeProvinces(Collection<Province> provinceCollection) {
+        provinces.removeAll(provinceCollection);
     }
 
     /**
