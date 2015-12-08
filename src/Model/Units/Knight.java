@@ -3,7 +3,7 @@ package Model.Units;
 /**
  * Created by jaln on 2/12/15.
  */
-public class Knight {
+public class Knight implements Unit {
 
     private int strength = 2;
     private String id;
