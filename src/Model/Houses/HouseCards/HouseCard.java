@@ -8,5 +8,4 @@ public interface HouseCard {
     public void performImmediately();
     public void performPreBattle();
     public void performPostBattle();
-
 }
