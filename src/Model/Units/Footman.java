@@ -12,7 +12,7 @@ public class Footman implements Unit {
      * Constructor for the Footman class
      * @param id
      */
-    public void Footman(String id) {
+    public Footman(String id) {
         this.id = id;
     }
 

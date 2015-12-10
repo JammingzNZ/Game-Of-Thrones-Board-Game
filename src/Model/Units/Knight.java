@@ -12,7 +12,7 @@ public class Knight implements Unit {
      * Constructor for the Knight class
      * @param id
      */
-    public void Knight(String id) {
+    public Knight(String id) {
         this.id = id;
     }
 
