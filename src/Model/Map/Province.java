@@ -23,8 +23,7 @@ public class Province {
     private boolean isLand;
     private boolean hasDock;
 
-    public void Province(String name, Set neighbours, int castle, int crowns, int barrels, boolean isLand, boolean hasDock) {
-        this.neighbours = neighbours;
+    public Province(String name, int castle, int crowns, int barrels, boolean isLand, boolean hasDock) {
         this.castle = castle;
         this.crowns = crowns;
         this.barrels = barrels;
@@ -102,5 +101,13 @@ public class Province {
      */
     public Set getNeighbours() {
         return neighbours;
+    }
+
+    /**
+     * Add's a neighbour to the Set of Neighbours
+     * @param neighbour
+     */
+    public void addNeighbour(Province neighbour) {
+        neighbours.add(neighbour);
     }
 }
