@@ -12,7 +12,7 @@ public class SiegeEngiene implements Unit {
      * Constructor for the SiegeEngiene class
      * @param id
      */
-    public void SiegeEngiene(String id) {
+    public SiegeEngiene(String id) {
         this.id = id;
     }
 

@@ -12,7 +12,7 @@ public class Ship implements Unit {
      * Constructor for the Ship class
      * @param id
      */
-    public void Ship(String id) {
+    public Ship(String id) {
         this.id = id;
     }
 
